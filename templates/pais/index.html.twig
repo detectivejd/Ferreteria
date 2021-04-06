@@ -1,0 +1,74 @@
+{% extends 'base.html.twig' %}
+{% block body %}
+    {{ parent() }}
+    <h3><i class="fa fa-angle-right"></i>&nbsp;Gestión de Paises</h3>
+    <div class = "row justify-content-md-center">
+        <div class = "col-md-auto">
+            <a href="{{ path('home') }}">
+                <button class="btn btn-primary">
+                    <i class="fa fa-arrow-left"></i>&nbsp;Volver
+                </button>
+            </a>
+        </div>
+        <div class = "col-md-auto">
+            <a href="{{ path('pais_new') }}">
+                <button class="btn btn-primary">
+                    <i class="fa fa-plus"></i>&nbsp;Crear
+                </button>
+            </a>
+        </div>
+        <div class = "col">
+            {{ form_start(form) }}
+                <div class="input-group">
+                    {{ form_widget(form.dato)}}
+                    <button class="btn btn-outline-secondary border-left-0 rounded-0 rounded-right" type="submit">
+                        <i class="fa fa-search"></i>
+                    </button>
+                </div>
+            {{ form_end(form) }}
+        </div>
+    </div>
+    <br />
+    <section id="unseen" style="padding-left: 5px; padding-right: 5px;">
+        <table class="table table-bordered table-striped table-condensed">
+            <thead>
+                <tr>
+                    <th></th>
+                    <th{% if paises.isSorted('id') %} class="sorted {{ paises.getDirection() }}"{% endif %}>
+                        {{ knp_pagination_sortable(paises, 'ID', 'id') }}
+                    </th>
+                    <th{% if paises.isSorted('nombre') %} class="sorted {{ paises.getDirection() }}"{% endif %}>
+                        {{ knp_pagination_sortable(paises, 'Nombre', 'nombre') }}
+                    </th>                
+                </tr>
+            </thead>
+            <tbody>
+            {% for pais in paises %}
+                <tr>
+                    <td>
+                        <div class = "row justify-content-md-start">
+                            <div class = "col-md-auto">
+                                <a href="{{ path('pais_edit', {'id': pais.id}) }}" title="Editar">
+                                    <i class="fa fa-edit" style="font-size: 22px;"></i>
+                                </a>
+                            </div>
+                            <div class = "col-md-auto">
+                                <a href="{{ path('pais_delete', {'id': pais.id}) }}" title="Borrar">
+                                    <i class="fa fa-times-circle" style="font-size: 22px;"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </td>
+                    <td>{{ pais.id }}</td>
+                    <td>{{ pais.nombre }}</td>                
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+        {% if paises.getTotalItemCount > 10 %}
+            <div class="navigation">
+                {{ knp_pagination_render(paises) }}
+            </div>
+        {% endif %}
+    </section>        
+{% endblock %}

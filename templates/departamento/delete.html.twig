@@ -1,0 +1,31 @@
+{% extends 'base.html.twig' %}
+{% block body %}
+    {{ parent() }}
+    {{ form_start(form, {'attr': {'novalidate':'novalidate'}}) }}
+        <h3><i class="fa fa-angle-right"></i>&nbsp;Borrar Departamento</h3>
+        <div class="form-horizontal style-form">
+            <div class="row mt">
+                <div class="col-lg-6 col-md-6 col-sm-12">
+                    <div class="showback">
+                        <div class="form-group row">
+                            <label class="col-form-label">{{ mensaje }}</label>
+                            <div class="col-sm-10">
+                                {{ form_widget(form.sip) }}</td> 
+                            </div>
+                        </div>
+                        <div>                            
+                            <button type="submit" name="btnsip" value="Aceptar" class="btn btn-success" tabindex="3">
+                                <i class="fa fa-thumbs-down"></i>&nbsp;Sí
+                            </button>&nbsp;
+                            <a href="{{ path('departamento_index') }}" class="btn">
+                                <button type="button" name="btnnop" value="Cancelar" class="btn btn-danger" tabindex="3">
+                                    <i class="fa fa-thumbs-up"></i>&nbsp;No
+                                </button>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    {{ form_end(form) }} 
+{% endblock %}
