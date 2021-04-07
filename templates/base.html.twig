@@ -9,14 +9,14 @@
             <link rel="stylesheet" href="{{ asset('css/regular.min.css') }}">
             <link rel="stylesheet" href="{{ asset('css/solid.min.css') }}">
             <link rel="stylesheet" href="{{ asset('css/brands.min.css') }}">
-            <link rel="stylesheet" href="{{ asset('css/select2.min.css') }}">
+            <link rel="stylesheet" href="{{ asset('css/select2.css') }}">
         {% endblock %}
         {% block javascripts %}            
             <script type="text/javascript" src="{{ asset('js/jquery-3.5.1.min.js') }}" ></script>
             <script type="text/javascript" src="{{ asset('js/popper.min.js') }}" ></script>
             <script type="text/javascript" src="{{ asset('js/bootstrap.min.js') }}" ></script>
-            <script type="text/javascript" src="{{ asset('js/select2.min.js') }}" ></script>
-            <script type="text/javascript" src="{{ asset('js/autocomplete.js') }}" ></script>            
+            <script type="text/javascript" src="{{ asset('js/select2.js') }}" ></script>
+            <script src="{{ asset('bundles/tetranzselect2entity/js/select2entity.js') }}"></script>
         {% endblock %}
     </head>
     <body>        
